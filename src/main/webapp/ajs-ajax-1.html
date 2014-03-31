@@ -1,0 +1,66 @@
+<!doctype html>
+<html ng-app="">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="/webjars/bootstrap/3.0.3/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/css/sticky-footer-navbar.css"/>
+</head>
+<body>
+<div id="wrap">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">web6gradle</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+
+		<!-- Begin page content -->
+		<div class="container">
+			<div class="page-header"> <h1>Read json from server</h1> </div>
+	<div ng-controller="FetchCtrl">
+		<select ng-model="method">
+			<option>GET</option>
+			<option>JSONP</option>
+		</select> 
+		<input type="text" ng-model="url" size="80" />
+		<button ng-click="fetch()">fetch</button>
+		<br/>
+		<button ng-click="updateModel('GET', 'json')">Sample GET</button>
+		<button ng-click="updateModel('JSONP', 
+		'http://angularjs.org/greet.php?callback=JSON_CALLBACK&amp;name=Super%20Hero')">
+			Sample JSONP</button>
+		<button ng-click="updateModel('JSONP', 'http://angularjs.org/doesntexist&callback=JSON_CALLBACK')">
+			Invalid JSONP</button>
+		<pre>http status code: {{status}}</pre>
+		<pre>http response data: {{data}}</pre>
+	</div>
+		</div>
+	</div>
+	<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+	<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+	<script src="/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
+	<script src="/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/js/ajs-ajax-1.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+	<h1>Berechne Körperoberfläche</h1>
+	<div ng-controller="BSAController1 as bsa1">
+		<label>kg= <input type="text" ng-model="bsa1.kg" ng-change="bsa1.calc()" />
+		</label> <label>cm= <input type="text" ng-model="bsa1.cm" ng-change="bsa1.calc()" />
+		</label>
+		<div>Mosteller={{bsa1.mosteller}}</div>
+		<div>Haycock={{bsa1.haycock}}</div>
+		<div>DuBois={{bsa1.haycock}}</div>
+		<div>Boyd={{bsa1.boyd}}</div>
+		{{bsa1.r}}
+		<div>Gehan-George=
+			<table>
+				<tr><th>5</th><th>5-19</th><th>20</th></tr>
+				<tr><td>{{bsa1.gege5}}</td><td>{{bsa1.gege19}}</td><td>{{bsa1.gege20}}</td></tr>
+			</table>
+		</div>
+	</div>
+	<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+<script type="text/javascript">
+function BSAController1() {
+	this.kg;
+	this.cm;
+	this.mosteller;
+	this.gege5;
+	this.gege19;
+	this.gege20;
+	this.haycock;
+	this.dubois;
+	this.boyd;
+	this.calcBoyd = function() {
+		this.boyd=window.Math.round(0.0332965*window.Math.pow(this.cm,0.3)
+		*window.Math.pow(this.kg,0.6157-0,00816474*window.Math.log(this.kg))*100)/100;
+	}
+	this.calcDuBois = function() {
+		this.dubois=window.Math.round(0.007184*window.Math.pow(this.cm,0.725)
+				*window.Math.pow(this.kg,0.425)*100)/100;
+	}
+	this.calcMosteller = function() {
+		this.mosteller=window.Math.round(0.01666667*window.Math.pow(this.cm,0.5)
+				*window.Math.pow(this.kg,0.5)*100)/100;
+	}
+	this.calcHaycock = function() {
+		this.haycock=window.Math.round(0.024265*window.Math.pow(this.cm,0.3964)
+				*window.Math.pow(this.kg,0.5378)*100)/100;
+	}
+	this.calcGege = function() {
+		this.gege5=window.Math.round(0.02667*window.Math.pow(this.cm,0.42246)*window.Math.pow(this.kg,0.51456)*100)/100;
+		this.gege19=window.Math.round(0.03050*window.Math.pow(this.cm,0.35129)*window.Math.pow(this.kg,0.54375)*100)/100;
+		this.gege20=window.Math.round(0.01545*window.Math.pow(this.cm,0.54468)*window.Math.pow(this.kg,0.46336)*100)/100;
+	}
+}
+BSAController1.prototype.calc = function() {
+	this.calcMosteller();
+	this.calcHaycock();
+	this.calcDuBois();
+	this.calcGege();
+	this.calcBoyd();
+};
+</script>
+</body>
+</html>

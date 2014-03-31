@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+	<meta charset="utf-8"/>
+	<!-- 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 -->
+	<link rel="stylesheet" href="/webjars/bootstrap/3.0.3/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/css/sticky-footer-navbar.css"/>
+</head>
+<body>
+<div th:fragment="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">web7gradle</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">Home.. дім</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="/dir">Dir</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+		<a class="navbar-brand" href="/"> home .. дім </a>
+		</div>
+	</div>
+	</div>
+	<!-- 
+	<div th:fragment="copy_depricated">
+		<hr />
+		w11
+		<footer> &copy; 2014 Company2 </footer>
+	</div>
+	 -->
+	<div id="footer" th:fragment="footer">
+		<div class="container">
+			<div class="col-md-4">
+				<p class="text-muted">&copy; 2014 Company</p>
+			</div>
+			<div class="col-md-4">
+				<p class="text-muted">Place sticky footer content here.</p>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="script">
+		<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+		<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+		<script src="/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
+		<script src="/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	</div>
+</body>
+</html>

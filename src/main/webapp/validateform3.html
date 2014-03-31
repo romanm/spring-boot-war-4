@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+</head>
+<body>
+	http://jquery.bassistance.de/validate/demo/
+<form class="cmxform" id="signupForm" method="get" action="">
+	<fieldset>
+		<legend>Validating a complete form</legend>
+		<p>
+			<label >Firstname
+			<input  name="firstname" type="text" />
+			</label>
+		</p>
+		<p> <label>Lastname <input name="lastname" type="text" /> </label> </p>
+		<p> <label>Username <input name="username" type="text" /> </label> </p>
+		<p> <label >Password <input id="password" name="password" type="password" /> </label> </p>
+		<p> <label>Confirm password <input name="confirm_password" type="password" /> </label> </p>
+		<p> <label>Email<input name="email" type="email" /></label> </p>
+		<p> <label>Please agree to our policy<input type="checkbox" class="checkbox" name="agree" /></label> </p>
+		<p> <label>I'd like to receive the newsletter<input type="checkbox" class="checkbox" name="newsletter" /></label> </p>
+		<fieldset id="newsletter_topics">
+			<legend>Topics (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+			<label>
+				<input type="checkbox" value="marketflash" name="topic" />
+				Marketflash
+			</label>
+			<label >
+				<input type="checkbox"  value="fuzz" name="topic" />
+				Latest fuzz
+			</label>
+			<label >
+				<input type="checkbox" value="digester" name="topic" />
+				Mailing list digester
+			</label>
+			<label for="topic" class="error">Please select at least two topics you'd like to receive.</label>
+		</fieldset>
+		<p>
+			<input class="submit" type="submit" value="Submit"/>
+		</p>
+	</fieldset>
+</form>
+	
+	<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+	<script src="/webjars/jquery-validation/1.11.1/jquery.validate.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+	// validate signup form on keyup and submit
+	$("#signupForm").validate({
+		rules: {
+			firstname: "required",
+			lastname: "required",
+			username: {
+				required: true,
+				minlength: 2
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			confirm_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			topic: {
+				required: "#newsletter:checked",
+				minlength: 2
+			},
+			agree: "required"
+		},
+		messages: {
+			firstname: "Please enter your firstname",
+			lastname: "Please enter your lastname",
+			username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: "Please enter a valid email address",
+			agree: "Please accept our policy"
+		}
+	});
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="/webjars/bootstrap/3.0.3/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/css/sticky-footer-navbar.css"/>
+</head>
+<body>
+<div id="wrap">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">web7gradle</a>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="ctrl-as-exmpl"
+		ng-controller="TaskController1 as taskController">
+		<div class="page-header">
+			<h1>Task block</h1>
+		</div>
+		<div class="col-md-6">
+			<table>
+				<tr ng-repeat="task in taskController.taskBlock">
+					<td><span>{{task.drug}}</span> <span>{{task.dose}}</span></td>
+					<td>
+						<table>
+							<tr ng-repeat="termin in task.termins">
+								<td>{{termin.malProDay}} mal pro Tag, {{termin.days}} Tags</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<table>
+				<tr ng-repeat="task in taskController.taskBlock2">
+					<td><span>{{task.drug}}</span> <span>{{task.dose}}</span></td>
+					<td>{{task.malProDay}} mal pro Tag, {{task.days}} Tags</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col-md-6">t1</div>
+		<div class="col-md-6">t2
+			<div id='my1calendar'></div>
+		</div>
+	</div>
+</div>
+	<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+	<script src="/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
+	<script src="/webjars/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+	<script src="/js/taskController.js"></script>
+	<script src="/js/my1calendar.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var calendar = $('#my1calendar').my1Calendar({
+			
+		});
+	});
+	</script>
+</body>
+</html>

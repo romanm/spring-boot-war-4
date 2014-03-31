@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+</head>
+<body>
+	<form class="cmxform" id="commentForm" method="get" action="">
+		<fieldset>
+			<legend>Please provide your name, email address (won't be
+				published) and a comment</legend>
+			<p>
+				<label>Name (required, at least 2 characters) <input
+					name="name" minlength="2" type="text" required />
+				</label>
+			<p>
+				<label>E-Mail (required) <input type="email" name="email"
+					required />
+				</label>
+			</p>
+			<p>
+				<label for="curl">URL (optional) <input id="curl" type="url"
+					name="url" />
+				</label>
+			</p>
+			<p>
+				<label for="ccomment">Your comment (required) 
+					<textarea id="ccomment" name="comment" required></textarea>
+				</label>
+			</p>
+			<p>
+				<input class="submit" type="submit" value="Submit" />
+			</p>
+		</fieldset>
+	</form>
+	<form onsubmit="return false">
+		<input name="a" type="number" step="any"> + <input name="b"
+			type="number" step="any"> =
+		<output onforminput="value = a.valueAsNumber + b.valueAsNumber"></output>
+	</form>
+	<form onsubmit="return false">
+		<input id="a" name="a" type="number" step="any"> + <input
+			id="b" name="b" type="number" step="any"> =
+		<output for="a b"
+			onforminput="value = a.valueAsNumber + b.valueAsNumber"></output>
+	</form>
+	<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+<script src="/webjars/jquery-validation/1.11.1/jquery.validate.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+	// validate the comment form when it is submitted
+	$("#commentForm").validate();
+})
+</script>
+</body>
+</html>

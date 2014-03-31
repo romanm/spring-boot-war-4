@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>web7gradle</title>
+	<head th:include="template :: head"  th:remove="tag"></head>
+</head>
+<body>
+	<div th:replace="template :: navbar"></div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<div> <a href="greeting">greeting</a> </div>
+			<div> <a href="json">json</a> </div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col-md-4">
+			<fieldset>
+				<legend>
+					<a href="http://angularjs.org/">AngularJS</a>:
+				</legend>
+				<div>
+					<a href="angularjs-The-Basics">AngularJS The Basics</a>
+				</div>
+			</fieldset>
+		</div>
+		<div class="col-md-4">
+			<fieldset>
+				<legend>static html</legend>
+				<div>
+					<a href="ajs-ajax-1.html">ajs-ajax-1.html</a>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+	<div th:include="template :: copy"></div>
+	<div th:include="template :: script" th:remove="tag"></div>
+</body>
+</html>

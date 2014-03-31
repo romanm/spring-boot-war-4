@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/webjars/jquery/2.0.3/jquery.js"></script>
+<script src="/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
+<link rel="stylesheet" href="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css">
+<script>
+	$(document).ready(function() {
+		$("#dialog1").dialog();
+		
+		$("#create-user").button()
+			.click(function() {
+				$( "#dialog3" ).dialog();
+			});
+
+	});
+	function showDialog() {
+		$("#dialog2").dialog({
+			width : 600,
+			height : 400,
+		/*
+		http://imperavi.com/redactor/examples/uidialog/
+			open : function(event, ui) {
+				var textarea = $('<textarea style="height: 276px;">');
+				$(textarea).redactor({
+					focus : true,
+					autoresize : false,
+				initCallback: function()
+				{
+					this.set('<p>Lorem...</p>');
+				}
+				});
+			}
+		*/
+		});
+	}
+</script>
+</head>
+<body>
+	Open popup dialog 1 onload.
+	<div id="dialog1" title="Title: Contact form">
+		<p>appear now</p>
+		<input name="n1"/>
+		<input name="n2"/>
+	</div>
+
+<p><a href="javascript:void(null);" onclick="showDialog();">Open dialog 2</a></p>
+<div id="dialog2" title="Basic modal dialog" style="display: none;"></div>
+
+<button id="create-user">open dialog 3</button>
+<div id="dialog3" title="Create new user" style="display: none;">
+	<p class="validateTips">All form fields are required.</p>
+	<form>
+	<fieldset>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name">
+		<label for="email">Email</label>
+		<input type="text" name="email" id="email" value="">
+		<label for="password">Password</label>
+<!-- 
+		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+ -->
+	</fieldset>
+	</form>
+</div>
+
+</body>
+</html>	

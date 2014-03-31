@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/webjars/bootstrap/3.0.3/css/bootstrap.css"/>
+	<link rel="stylesheet" href="/webjars/fullcalendar/1.6.4/fullcalendar.print.css" media='print'>
+	<link rel="stylesheet" href="/webjars/fullcalendar/1.6.4/fullcalendar.css" />
+	<link rel="stylesheet" href="/webjars/jquery-ui/1.10.3/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/css/sticky-footer-navbar.css"/>
+	<style type="text/css">
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">web6gradle</a>
+				</div>
+			</div>
+		</div>
+		<div class="container" >
+			<div class="page-header">
+				<h1>My calendar</h1>
+			</div>
+			Used <a href="http://arshaw.com/fullcalendar/">FullCalendar</a> from
+			Adam Shaw (arshaw)
+			<div id='calendar'></div>
+			<div id="dynamicDialog" title="Basic modal dialog" style="display: none;"></div>
+		</div>
+	</div>
+	<script src="/webjars/jquery/2.1.0/jquery.js"></script>
+	<script src="/webjars/jquery-ui/1.10.3/ui/jquery-ui.js"></script>
+	<script src="/js/fullcalendar.js"></script>
+	<!-- 
+	<script src="/webjars/fullcalendar/1.6.4/fullcalendar.js"></script>
+	 -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+	console.log("bevore init fullCalendar");
+		var calendar = $('#calendar').fullCalendar({
+			header:{
+				left:"prev,next today",
+				center:"title",
+				right: 'month,agendaWeek,agendaDay'
+			},
+			slotMinutes: 15,
+			firstDay:1,
+			weekNumbers:true,
+			weekends:true,
+			theme:false,
+			selectable:true,
+			eventClick:function(calEvent, jsEvent, view) {
+				var didi=$( "#dynamicDialog" );
+				didi.dialog({
+					title:"Event: '"+ calEvent.title+"' x="+ jsEvent.pageX,
+					buttons: [{
+						id:"okButton",
+						text:"OK",
+						click:function(){
+							calEvent.title=$( "#i1" ).val();
+							calendar.fullCalendar( 'rerenderEvents' );
+							$(this).dialog("close");
+						}
+					}],
+					open:function(){
+						didi.empty();
+						didi.append('<input id="i1" type="text" name="amount" value="'+calEvent.title+'"/>');
+						/*  
+						$('#i1').keypress(function(event){
+							if(event.keyCode == 13){
+								$('#okButton').click();
+							}
+						});
+						*/
+					}
+				});
+			/*
+				alert('Event: ' + calEvent.title
+				+', Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY
+				+', View: ' + view.name);
+			*/
+				// change the border color just for fun
+				$(this).css('border-color', 'red');
+			},
+			select: function(start,end,allDay){
+				var title = prompt("New Event ("+start.toDateString()+"):");
+				if(title){
+					calendar.fullCalendar("renderEvent",
+						{
+						title:title,
+						start:start,
+						end:end,
+						allDay:allDay
+						},
+						true
+					);
+				}
+				calendar.fullCalendar("unselect");
+			},
+			editable: true,
+			events:[
+			{
+				title: "My event 1",
+				start: new Date(y,m,d,15,0),
+				allDay: false
+			}
+			]
+			/*
+			,
+			eventRender: function(event, element) {
+		        element.qtip({
+		            content: event.description
+		        });
+		    }
+			*/
+		});
+	});
+</script>
+</body>
+</html>

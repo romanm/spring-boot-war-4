@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>myajax1</title>
+</head>
+<body>
+	<h1>myajax1</h1>
+	<div ng-controller="MyAjax1">
+		<label>myajax1 = <input type="text" ng-model="seek" ng-change="fetch()" /> </label>
+		<pre>http status code: {{status}}</pre>
+		<pre>http response data: {{data}}</pre>
+		<div>
+			<h5> <span>{{data.name}}</span> <span>{{data.desc}}</span> </h5>
+			<ul>
+				<li ng-repeat="diag in data.diags">
+					<span>{{diag.name}}</span> <span>{{diag.desc}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+	<script type="text/javascript">
+		function MyAjax1($scope, $http) {
+			this.seek;
+			$scope.method = 'GET';
+//			$scope.url = 'json';
+			$scope.url = 'icd10';
+			$scope.fetch = function() {
+				console.log("--- 1 --- " + this.seek);
+				$scope.code = null;
+				$scope.response = null;
+				$http({method: 'GET', url: 'icd10'}).
+				success(function(data, status) {
+					$scope.status = status;
+					$scope.data = data;
+				console.log("--- 2 --- " + data);
+				}).
+				error(function(data, status) {
+					$scope.data = data || "Request failed";
+					$scope.status = status;
+				});
+			}
+		}
+	</script>
+</body>
+</html>

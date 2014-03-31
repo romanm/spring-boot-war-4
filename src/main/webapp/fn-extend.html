@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery.fn.extend demo</title>
+<style>
+label {
+	display: block;
+	margin: .5em;
+}
+</style>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<label><input type="checkbox" class="check" name="foo"> Foo</label>
+	<label><input type="checkbox" class="check" name="bar"> Bar</label>
+	<label><input type="checkbox" name="bad"> Bad</label>
+	<div id="tagline">Text to Zigsag</div>
+	<script>
+		$.fn.extend({
+			check : function() {
+				return this.each(function() {
+					this.checked = true;
+				});
+			},
+			uncheck : function() {
+				return this.each(function() {
+					this.checked = false;
+				});
+			}
+			,
+			zigzag : function() {
+				var text = $(this).text();
+			/*  
+				var zigzagText = '';
+				var toggle = true; //lower/uppper toggle
+				$.each(text, function(i, nome) {
+					zigzagText += (toggle) ? nome.toUpperCase() : nome
+							.toLowerCase();
+					toggle = (toggle) ? false : true;
+				});
+				return zigzagText;
+			*/
+				return text;
+			}
+		});
+		// Use the newly created .check() method
+		//$("input[type='checkbox']").check();
+		$("input.check").check();
+		
+		console.log($('#tagline').zigzag());
+		//output: #1 jQuErY BlOg fOr yOuR DaIlY NeWs, PlUgInS, tUtS/TiPs &amp; cOdE SnIpPeTs.
+
+		//chained example
+		console.log($('#tagline').zigzag().toLowerCase());
+		//output: #1 jquery blog for your daily news, plugins, tuts/tips &amp; code snippets.
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="">
+<head>
+<title>Hello AngularJS</title>
+		<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+		<script>
+		/*  
+			function Hello($scope) {
+		*/
+			function Hello($scope, $http) {
+				$http.get('/json')
+					.success(function(data) {
+						$scope.greeting = data;
+					});
+			}
+		</script>
+</head>
+
+<body>
+	<div ng-controller="Hello">
+		<p>The ID is {{greeting.id}}</p>
+		<p>The content is {{greeting.content}}</p>
+		<p>From json greeting= {{greeting}}</p>
+	</div>
+</body>
+</html>

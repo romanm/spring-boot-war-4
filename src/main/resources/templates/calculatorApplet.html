@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Applet: 1</title>
+<head th:include="template :: head" th:remove="tag"></head>
+</head>
+<body>
+	<div id="wrap">
+		<div th:replace="template :: navbar"></div>
+		<div class="jumbotron">
+			<div class="container">
+			<a href="calculatorApplet">
+			MVC calculator
+			</a>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-md-4">
+				<fieldset>
+					<legend>
+						<div>Calculator applet</div>
+					</legend>
+					<div>
+						<applet archive="cl/calculator-mvc-1-1.0.jar" code="org.calculator1.CalculatorApplet" 
+							width="240" height="220"> </applet>
+							<!-- 
+						<applet codebase="cl" code="org.calculator1.CalculatorApplet" 
+							width="240" height="220"> </applet>
+							 -->
+					</div>
+				</fieldset>
+			</div>
+			<div class="col-md-4">
+				<fieldset>
+					<legend>
+						<div>Calculator swing</div>
+					</legend>
+					<div>
+						<img alt="Calculator swing" src="img/calculatorSwing.png"/>
+						<div>
+						java -jar 
+						build/libs/<a href="cl/calculator-mvc-1-1.0.jar">calculator-mvc-1-1.0.jar</a>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="container">
+			<hr/>
+			<b>GitHub:</b>
+			<a href="https://github.com/romanm/calculator-mvc-1">MVC calculator </a>
+			source
+		</div>
+	</div>
+</body>
+</html>

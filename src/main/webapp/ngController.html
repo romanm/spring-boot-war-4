@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html ng-app="">
+<head>
+</head>
+<body>
+	<div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
+		Name: 
+		<input type="text" ng-model="settings.name" /> 
+		[ <a href="" ng-click="settings.greet()">greet</a> ]<br /> Contact:
+		<ul>
+			<li ng-repeat="contact in settings.contacts">
+				<select ng-model="contact.type">
+					<option>phone</option>
+					<option>email</option>
+				</select>
+				<input type="text" ng-model="contact.value" /> 
+				[ <a href="" ng-click="settings.clearContact(contact)">clear</a> 
+				| <a href="" ng-click="settings.removeContact(contact)">X</a> ]
+			</li>
+			<li>[ <a href="" ng-click="settings.addContact()">add</a> ] </li>
+		</ul>
+	</div>
+	<script src="/webjars/angularjs/1.2.8/angular.min.js"></script>
+	<script src="/js/ngController.js"></script>
+</body>
+</html>
