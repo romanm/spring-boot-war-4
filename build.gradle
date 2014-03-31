@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.0.RC1")
+        classpath("org.springframework.boot:spring-boot-starter-web:1.0.0.RC5")
+        //classpath("org.gradle.api.plugins:gradle-tomcat-plugin:1.2.3")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+//apply plugin: 'tomcat'
+apply plugin: 'war'
+
+war {
+//jar {
+	baseName = 'springboot-war-4'
+	version =  '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+	maven { url "http://repo.spring.io/libs-snapshot" }
+	//maven { url "http://maven-repository.com" }
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web:1.0.0.RC1")
+	compile("org.thymeleaf:thymeleaf-spring4:2.1.2.RELEASE")
+	compile("com.fasterxml.jackson.core:jackson-databind")
+	compile("org.webjars:angularjs:1.2.8")
+	compile("org.webjars:jquery:2.1.0")
+	compile("org.webjars:jquery-ui:1.10.3")
+	compile("org.webjars:jquery-validation:1.11.1")
+	compile("org.webjars:fullcalendar:1.6.4")
+	compile("org.webjars:bootstrap:3.0.3")
+	compile("dom4j:dom4j:1.6")
+	//compile("dom4j:dom4j:1.5.1")
+	//compile("dom4j:dom4j:20040902.021138")
+	compile("jaxen:jaxen:1.1.6")
+	testCompile("junit:junit:4.11")
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.8'
+}
